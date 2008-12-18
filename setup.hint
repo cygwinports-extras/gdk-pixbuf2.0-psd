@@ -1,0 +1,7 @@
+category: Graphics Gnome
+requires: cygwin libglib2.0_0 libgdk_pixbuf2.0_0
+sdesc: "GdkPixbuf loader for Photoshop PSD files"
+ldesc: "This project aims to provide GdkPixbuf loader for PSD file 
+format. GdkPixbuf is part of GTK and applications like Eye of GNOME and 
+gThumb use it to handle image loading. Loader provided by this project 
+will let those apps open PSD images."

@@ -1,0 +1,58 @@
+gdk-pixbuf2.0-psd
+------------------------------------------
+This project aims to provide GdkPixbuf loader for PSD file format. 
+GdkPixbuf is part of GTK and applications like Eye of GNOME and gThumb 
+use it to handle image loading. Loader provided by this project will let 
+those apps open PSD images.
+
+Runtime requirements:
+  cygwin-1.5.25-15
+  libgdk_pixbuf2.0_0-2.14.5-1
+  libglib2.0_0-2.18.3-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  binutils-20080624-2
+  cygport-0.4.3-1
+  gcc-core-3.4.4-3
+  libtool-2.2.6a-1
+  pkg-config-0.23a-2
+
+Canonical website:
+  http://code.google.com/p/gdk-pixbuf-psd/
+
+Canonical download:
+  http://code.google.com/p/gdk-pixbuf-psd/downloads/list
+
+-------------------------------------------
+
+Build instructions:
+  unpack gdk-pixbuf2.0-psd-20081217-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./gdk-pixbuf2.0-psd-20081217-X.cygport all
+
+This will create:
+  /usr/src/gdk-pixbuf2.0-psd-20081217-X-src.tar.bz2
+  /usr/src/gdk-pixbuf2.0-psd-20081217-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /etc/postinstall/gdk-pixbuf2.0-psd.sh
+  /usr/lib/gtk-2.0/2.10.0/loaders/cygpixbufloader-psd.dll
+  /usr/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-psd.la
+  /usr/share/doc/gdk-pixbuf2.0-psd-20081217/README
+
+------------------
+
+Port Notes:
+
+----- version 20081217-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

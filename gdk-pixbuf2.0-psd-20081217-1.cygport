@@ -1,0 +1,28 @@
+inherit utils
+
+ORIG_PN="gdk-pixbuf-psd"
+
+DESCRIPTION="GdkPixbuf loader for Photoshop PSD files"
+HOMEPAGE="http://code.google.com/p/gdk-pixbuf-psd/"
+SRC_URI="http://gdk-pixbuf-psd.googlecode.com/files/${ORIG_PN}_${PV}.tar.gz"
+
+loadersdir="/usr/lib/gtk-2.0/$(pkg-config --variable=gtk_binary_version gtk+-2.0)/loaders"
+
+src_compile() {
+	check_pkg_config GDK_PIXBUF gdk-pixbuf-2.0
+
+	lndirs
+	cd ${B}
+	libtool --mode=compile --tag=CC --tag=disable-static \
+		gcc ${CFLAGS} -std=c99 -DGDK_PIXBUF_ENABLE_BACKEND ${GDK_PIXBUF_CFLAGS} \
+		-c -o io-psd.lo io-psd.c
+	libtool --mode=link --tag=CC --tag=disable-static gcc ${LDFLAGS} \
+		-module -avoid-version -no-undefined -rpath ${loadersdir} \
+		-o libpixbufloader-psd.la io-psd.lo ${GDK_PIXBUF_LIBS}
+}
+
+src_install() {
+	cd ${B}
+	exeinto ${loadersdir}
+	doexe libpixbufloader-psd.la
+}
